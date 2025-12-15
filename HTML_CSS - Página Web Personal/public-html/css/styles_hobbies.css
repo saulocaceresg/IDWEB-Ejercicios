@@ -1,0 +1,65 @@
+img {
+    height: 230px;
+    margin: 2px;
+}
+main article div.imagenes {
+    text-align: center;
+}
+main article h3 {
+    background-color: rgb(255, 255, 131);
+    padding: 10px;
+    margin: 0;
+}
+main article div.imagenes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+main article div.imagenes p {
+    border: 1px solid;
+    display: none;
+    max-width: 200px;
+    position: absolute;
+    top: 50%;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    background-color: blanchedalmond;
+    padding: 5px;
+    z-index: 10;
+}
+main article div.imagenes > div {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+main article div.imagenes div:hover p {
+    display: block;
+    transform: translateY(-50%);
+}
+main article div.imagenes div:hover img {
+    display: block;
+    height: 235px;
+}
+main article div.imagenes #ochentaycuatro p {
+    left: -220px;
+}
+main article div.imagenes #ntbydg p {
+    right: -220px;
+}
+main article div.imagenes div {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+main article div.imagenes #gta p {
+    transform: translateY(250%);
+}
+main article div.imagenes #mc p {
+    /* bottom: -20px; */
+    transform: translateY(400%);
+}
+main article div.imagenes #blas p {
+    /* bottom: -20px; */
+    transform: translateY(250%);
+}
