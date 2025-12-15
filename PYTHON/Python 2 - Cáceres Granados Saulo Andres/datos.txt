@@ -1,0 +1,3 @@
+Nombre: Saulo, Edad: 18
+Nombre: Hugo, Edad: 23
+Nombre: Kyle, Edad: 12
