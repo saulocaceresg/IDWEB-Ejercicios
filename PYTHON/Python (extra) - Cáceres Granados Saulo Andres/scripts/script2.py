@@ -3,7 +3,7 @@
 """
 2.	Estamos al final del semestre y para calcular su promedio el profesor del curso desea eliminar la peor nota y duplicar la mayor nota. De este modo, si sus notas fueran 12, 15, 17 y 14, el profesor eliminaría el 12 y duplicaría el 17, entonces sus notas serían 17, 15, 17 y 14 y sobre ellas calcularía el promedio. Usted deberá programar una función que reciba las notas y devuelva el promedio, según se explicó y para una cantidad de notas no determinada. Para programar su función no podrá usar ningún tipo de condicionales, sólo las funciones max y min de Python.
 """
-print("=============================== EJERCICIO 1 ============================")
+print("=============================== EJERCICIO 2 ============================")
 
 def promedio_mayor_dupl(notas):
     # Recoge el mayor y el menor dato
@@ -29,18 +29,31 @@ lista_notas = []
 while True:
     print("Ingrese nota ('q' para salir):")
     entrada = input("-> ")
+    
+    if entrada == 'q':
+        if len(lista_notas) > 1:
+            print("Saliendo...")
+            break
+        else:
+            print("INGRESE AL MENOS DOS NOTAS")
+            continue
 
-    if entrada == 'q' and len(lista_notas) != 0:
-        print("Saliendo...")
-        break
-
-    while not entrada or not entrada.isdigit() or not 0 <= int(entrada) <= 20:
-        print("¡DATO NO VÁLIDO! INGRESE DE NUEVO")
+    while not entrada.isdigit() or not (0 <= int(entrada) <= 20):
+        print("¡DATO NO VÁLIDO! INGRESE DE NUEVO.")
         entrada = input("-> ")
 
-    entrada = int(entrada)
+        if entrada == 'q':
+            if len(lista_notas) > 1:
+                print("Saliendo...")
+                break
+            else:
+                print("INGRESE AL MENOS DOS NOTAS")
+                continue
+    
+    if entrada == 'q':
+        break
 
-    lista_notas.append(entrada)
+    lista_notas.append(int(entrada))
 
 promedio = round(promedio_mayor_dupl(lista_notas), 2)
 
