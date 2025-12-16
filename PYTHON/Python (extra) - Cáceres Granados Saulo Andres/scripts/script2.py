@@ -55,10 +55,10 @@ while True:
 
     lista_notas.append(int(entrada))
 
+print(f"=> NOTAS ORIGINALES: {lista_notas}")
 promedio = round(promedio_mayor_dupl(lista_notas), 2)
 
 # Salida de datos
-print(f"=> NOTAS ORIGINALES: {lista_notas}")
 print(f"=> PROMEDIO: {promedio}")
 
 print("========================================================================")
