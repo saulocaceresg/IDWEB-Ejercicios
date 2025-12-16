@@ -23,5 +23,25 @@ def promedio_mayor_dupl(notas):
 
     return suma / len(notas)
 
+    
+# Ciclo while para ingresar notas hasta que escriba 'q'
+lista_notas = []
+while True:
+    print("Ingrese nota ('q' para salir):")
+    entrada = input("-> ")
+
+    if entrada == 'q' and len(lista_notas) != 0:
+        print("Saliendo...")
+        break
+
+    while not entrada or not entrada.isdigit() or not 0 <= int(entrada) <= 20:
+        print("¡DATO NO VÁLIDO! INGRESE DE NUEVO")
+        entrada = input("-> ")
+
+    entrada = int(entrada)
+
+    lista_notas.append(entrada)
+
+
 
 print("========================================================================")
