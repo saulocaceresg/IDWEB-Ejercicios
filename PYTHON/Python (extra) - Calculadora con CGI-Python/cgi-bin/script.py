@@ -12,15 +12,18 @@ def leer_template(ruta):
     return "<h3>Error: no se encontró index.html.</h3>"
 
 class MiServidor(BaseHTTPRequestHandler):
+    """
+    Clase para crear el servidor
+    """
     def do_GET(self):
         parsed = urlparse.urlparse(self.path)
         query = urlparse.parse_qs(parsed.query)
-        operacion = query.get("operacion", [""])[0]
+        operacion = urlparse.unquote_plus(query.get("operacion", [""])[0])
 
         html = leer_template(TEMPLATE_PATH)
         resultado_html = ""
 
-        regex = r"^\s(\d+)\s*([+-*/%])\s*(\d+)\s*$"
+        regex = r"^\s*(\d+)\s*([+\-*/%])\s*(\d+)\s*$"
         match = re.match(regex, operacion)
 
         if match:
@@ -48,15 +51,17 @@ class MiServidor(BaseHTTPRequestHandler):
         else:
             if operacion:
                 resultado_html = "<h2>Expresión inválida</h2>"
-        
-        html = html.replace("<!--RRESULTADO-->", resultado_html)
+
+        html = html.replace("<!--RESULTADO-->", resultado_html)
 
         self.send_response(200)
         self.send_header("Content-type", "text/html; charset=utf-8")
         self.end_headers()
         self.wfile.write(html.encode("utf-8"))
+        print("OPERACION:", repr(operacion))
+
 
 if __name__ == "__main__":
     servidor = HTTPServer(("localhost", 8000), MiServidor)
-    print("Servdor corriendo en http://localhost:8000")
+    print("Servidor corriendo en http://localhost:8000")
     servidor.serve_forever()
