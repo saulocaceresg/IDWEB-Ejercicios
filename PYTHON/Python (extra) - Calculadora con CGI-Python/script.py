@@ -17,6 +17,13 @@ class MiServidor(BaseHTTPRequestHandler):
     """
     def do_GET(self):
         parsed = urlparse.urlparse(self.path)
+         
+        if parsed.path != "/":
+            self.send_response(302)
+            self.send_header("Location", "/")
+            self.end_headers()
+            return
+        
         query = urlparse.parse_qs(parsed.query)
         operacion = urlparse.unquote_plus(query.get("operacion", [""])[0])
 
@@ -48,9 +55,9 @@ class MiServidor(BaseHTTPRequestHandler):
 
             except ZeroDivisionError:
                 resultado_html = "<h2>Error: división entre cero</h2>"
-        else:
-            if operacion:
-                resultado_html = "<h2>Expresión inválida</h2>"
+        
+        elif operacion:
+            resultado_html = "<h2>Expresión inválida</h2>"
 
         html = html.replace("<!--RESULTADO-->", resultado_html)
 
