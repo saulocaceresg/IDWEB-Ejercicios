@@ -4,6 +4,8 @@ import urllib.parse as urlparse
 from http.server import HTTPServer, BaseHTTPRequestHandler
 
 TEMPLATE_PATH = os.path.join(os.path.dirname(__file__), "index.html")
+CSS_PATH = os.path.join(os.path.dirname(__file__), "css", "styles.css")
+
 
 def leer_template(ruta):
     if os.path.exists(ruta) and os.path.isfile(ruta):
@@ -17,7 +19,18 @@ class MiServidor(BaseHTTPRequestHandler):
     """
     def do_GET(self):
         parsed = urlparse.urlparse(self.path)
-         
+
+        if parsed.path == "/css/styles.css":
+            if os.path.exists(CSS_PATH):
+                self.send_response(200)
+                self.send_header("Content-type", "text/css")
+                self.end_headers()
+                with open(CSS_PATH, "rb") as f:
+                    self.wfile.write(f.read())
+            else:
+                self.send_error(404)
+            return
+           
         if parsed.path != "/":
             self.send_response(302)
             self.send_header("Location", "/")
@@ -30,7 +43,7 @@ class MiServidor(BaseHTTPRequestHandler):
         html = leer_template(TEMPLATE_PATH)
         resultado_html = ""
 
-        regex = r"^\s*(\d+)\s*([+\-*/%])\s*(\d+)\s*$"
+        regex = r"^\s*(\d+)\s*([\+\-\*\/\%])\s*(\d+)\s*$"
         match = re.match(regex, operacion)
 
         if match:
