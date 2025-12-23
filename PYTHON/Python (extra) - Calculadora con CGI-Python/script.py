@@ -38,7 +38,7 @@ class MiServidor(BaseHTTPRequestHandler):
             return
         
         query = urlparse.parse_qs(parsed.query)
-        operacion = urlparse.unquote_plus(query.get("operacion", [""])[0])
+        operacion = query.get("operacion", [""])[0]
 
         html = leer_template(TEMPLATE_PATH)
         resultado_html = ""
@@ -51,8 +51,8 @@ class MiServidor(BaseHTTPRequestHandler):
             operador = match.group(2)
             b = int(match.group(3))
 
+            resultado = 0
             try:
-                resultado = 0
                 if operador == "+":
                     resultado = a + b
                 elif operador == "-":
