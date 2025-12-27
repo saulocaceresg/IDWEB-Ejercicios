@@ -58,7 +58,7 @@ main h1 {
     font-size: 2.7em;
     letter-spacing: 1px;
 }
-main input#input-search-simple {
+main input#input-search-simple, input#input-search-images {
     width: 40%;
     height: 40px;
     border-radius: 20px;
@@ -68,7 +68,7 @@ main input#input-search-simple {
     font-size: 15px;
     color: white;
 }
-main button#btn-simple {
+main button#btn-simple, button#btn-images {
     background-color: #070b2bee;
     color: white;
     padding: 15px;
