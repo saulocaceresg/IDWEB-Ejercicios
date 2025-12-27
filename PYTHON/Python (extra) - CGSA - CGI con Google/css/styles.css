@@ -49,12 +49,11 @@ header nav li a:hover {
 
 /* ==================== MAIN ==================== */
 main {
-    padding: 5%;
     text-align: center;
 }
 main h1 {
     color: white;
-    margin: 2%;
+    margin-top: 5%;
     font-size: 2.7em;
     letter-spacing: 1px;
 }
@@ -78,4 +77,74 @@ main button#btn-simple, button#btn-images {
 main button#btn-simple:hover {
     border: gray 1px solid;
     cursor: pointer;
+}
+
+/* ================== ESTILOS EN BÚSQUEDA AVANZADA ================= */
+main#advancedsearch {
+    /* margin: 2%; */
+}
+main#advancedsearch h1 {
+    text-align: left;
+    padding: 0%;
+    /* margin: 2.5%; */
+    margin: 25px;
+    color: #e17d69;
+    font-size: 1.3em;
+    font-weight: normal;
+    letter-spacing: 0;
+}
+hr {
+    width: 100%;
+    height: 1px;
+    background-color: gray;
+    border: none;
+}
+/* Estilos para el formulario */
+div#formulario {
+    text-align: left;
+    margin-left: 25px;
+    width: 50%;
+    height: auto;
+}
+#frm-advanced {
+    text-align: left;
+    width: auto;
+    /* margin: 2.5%; */
+    /* margin-left: 2.5%; */
+    /* display: inline; */
+    /* padding: 0; */
+}
+/* Estilos para organizar simétricamente los elementos del form */
+#frm-advanced .campo {
+    width: 100%;
+    /* height: 100%; */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+div.label {
+    width: 40%;
+}
+div.input {
+    width: 60%;
+}
+main#advancedsearch form#frm-advanced label.lbl-advanced {
+    color: white;
+}
+div.campo input[name="search-advanced"] {
+    width: 100%;
+    height: 25px;
+    justify-content: center;
+    align-items: center;
+    background-color: #271f3f;
+    border: 1px solid gray;
+    color: white;
+    padding-left: 10px;
+}
+div.campo input[name="search-advanced"]:focus {
+    outline: none;
+    border-color: rgb(113, 174, 199);
+    border-radius: 1px;
 }
