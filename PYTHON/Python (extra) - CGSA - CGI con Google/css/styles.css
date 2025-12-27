@@ -80,22 +80,16 @@ main button#btn-simple:hover {
 }
 
 /* ================== ESTILOS EN BÚSQUEDA AVANZADA ================= */
-main#advancedsearch {
-    /* margin: 2%; */
-}
 main#advancedsearch h1, div#formulario, p#p-advanced {
-    margin: 20px 40px;
+    margin: 20px auto 25px 40px;
 }
 main#advancedsearch p#p-advanced {
     text-align: left;
     color: white;
-    /* margin-left: 30px; */
 }
 main#advancedsearch h1 {
     text-align: left;
     padding: 0%;
-    /* margin: 2.5%; */
-    /* margin: 25px; */
     color: #e17d69;
     font-size: 1.3em;
     font-weight: normal;
@@ -114,9 +108,10 @@ div#formulario {
     height: auto;
 }
 #frm-advanced {
-    text-align: left;
-    width: auto;
+    width: 100%;
 }
+
+
 /* Estilos para organizar simétricamente los elementos del form */
 #frm-advanced .campo {
     width: 100%;
@@ -127,15 +122,18 @@ div#formulario {
     align-items: center;
 }
 div.label {
+    display: flex;
     width: 40%;
 }
 div.input {
+    display: flex;
     width: 60%;
 }
 main#advancedsearch form#frm-advanced label.lbl-advanced {
     color: #9f9f9f;
 }
 div.campo input[name="search-advanced"] {
+    /* display: flex; */
     width: 100%;
     height: 25px;
     justify-content: center;
@@ -149,4 +147,23 @@ div.campo input[name="search-advanced"]:focus {
     outline: none;
     border-color: rgb(113, 174, 199);
     border-radius: 1px;
+}
+
+/* Estilos para el button */
+div#cont-btn-advanced {
+    text-align: right;
+}
+button#btn-advanced {
+    text-align: center;
+    padding: 10px 15px;
+    background-color: #7cbed9;
+    font-weight: bold;
+    font-size: 0.7em;
+    border: none;
+    border-radius: 2px;
+}
+button#btn-advanced:hover {
+    background-color: rgb(177, 223, 241);
+    cursor: pointer;
+    box-shadow: inset 0 0 0 1px blue
 }
