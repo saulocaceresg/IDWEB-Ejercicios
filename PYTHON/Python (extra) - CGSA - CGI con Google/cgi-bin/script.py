@@ -68,8 +68,8 @@ else:
         <meta http-equiv="refresh" content="0;url={google_url}">
       </head>
       <body>
-        <p>Redirigiendo a Google… Si no pasa nada, haz clic
-           <a href="{google_url}">aquí</a>.</p>
+        <p style="color: white;">
+            Redirigiendo a Google… Si no pasa nada, haz clic <a href="{google_url}">aquí</a>.</p>
       </body>
     </html>
     """)
@@ -122,14 +122,81 @@ else:
         <meta http-equiv="refresh" content="0;url={google_url_images}">
       </head>
       <body>
-        <p>Redirigiendo a Google Imágenes… Si no pasa nada, haz clic
-           <a href="{google_url_images}">aquí</a>.</p>
+        <p style="color: white;">
+            Redirigiendo a Google Imágenes… Si no pasa nada, haz clic <a href="{google_url_images}">aquí</a>.</p>
       </body>
     </html>
     """)
 
 
 # ================== BÚSQUEDA AVANZADA =====================
+if not all_words or not exact_words or not none_words:
+    print("Content-Type: text/html; charset=utf-8")
+    print()
+    print("""
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Búsquedas con Google | Búsqueda Avanzada</title>
+        <link rel="stylesheet" href="../css/styles.css">
+    </head>
+    <body>
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Búsqueda Simple</a></li>
+                    <li><a href="../searchimages.html">Búsqueda de Imágenes</a></li>
+                    <li><a href="../advancedsearch.html">Búsqueda Avanzada</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main id="advancedsearch">
+            <h1>Búsqueda avanzada</h1>
+            <hr><br>
+            <p id="p-advanced">Buscar páginas con...</p>
+            <div id="formulario">    
+                <form id="frm-advanced" action="./script.py">
+                    <div class="campo">
+                        <div class="label">
+                            <label for="search" class="lbl-advanced">todas estas palabras: </label>
+                        </div>
+                        <div class="input">
+                            <input type="text" name="search-advanced-all" id="input-search-advanced-1" class="input-advanced">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="campo">
+                        <div class="label">
+                            <label for="" class="lbl-advanced">esta palabra o frase exacta: </label>
+                        </div>
+                        <div class="input">
+                            <input type="text" name="search-advanced-exact" id="input-search-advanced-2" class="input-advanced">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="campo">
+                        <div class="label">
+                            <label for="" class="lbl-advanced">ninguna de estas palabras: </label>
+                        </div>
+                        <div class="input">
+                            <input type="text" name="search-advanced-none" id="input-search-advanced-3" class="input-advanced">
+                        </div>
+                    </div>
+                    <br>
+                    <div id="cont-btn-advanced">
+                        <button id="btn-advanced">Búsqueda avanzada</button>
+                    </div>
+                </form>
+            </div>
+        </main>
+
+    </body>
+    </html>
+    """)
+
 parts = []
 
 if all_words.strip():
@@ -154,7 +221,7 @@ print(f"""
     <meta http-equiv="refresh" content="0;url={google_url_advanced}">
     </head>
     <body>
-    <p>
+    <p style="color: white;">
         Redirigiendo a la Búsqueda Avanzada de Google… Si no pasa nada, haz clic <a href="{google_url_advanced}">aquí</a>.</p>
     </body>
 </html>
