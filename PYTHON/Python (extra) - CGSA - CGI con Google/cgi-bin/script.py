@@ -13,7 +13,12 @@ cgitb.enable()
 form = cgi.FieldStorage()
 
 busqueda_simple = form.getfirst("search", "")
+
 busqueda_images = form.getfirst("search-images", "")
+
+all_words = form.getfirst("search-advanced-all", "")
+exact_words = form.getfirst("search-advanced-exact", "")
+none_words = form.getfirst("search-advanced-none", "")
 
 # Si no se enviaron datos → mostrar formulario
 if not busqueda_simple:
@@ -122,3 +127,35 @@ else:
       </body>
     </html>
     """)
+
+
+# ================== BÚSQUEDA AVANZADA =====================
+parts = []
+
+if all_words.strip():
+    parts.append(all_words.strip())
+
+if exact_words.strip():
+    parts.append(f'"{exact_words.strip()}"')
+
+if none_words.strip():
+    for w in none_words.split():
+        parts.append(f'-{w}')
+
+query_text = " ".join(parts)
+query_advanced = urllib.parse.quote_plus(query_text)
+google_url_advanced = f"https://www.google.com/search?q={query_advanced}"
+
+print("Content-Type: text/html; charset=utf-8")
+print()
+print(f"""
+<html>
+    <head>
+    <meta http-equiv="refresh" content="0;url={google_url_advanced}">
+    </head>
+    <body>
+    <p>
+        Redirigiendo a la Búsqueda Avanzada de Google… Si no pasa nada, haz clic <a href="{google_url_advanced}">aquí</a>.</p>
+    </body>
+</html>
+""")
