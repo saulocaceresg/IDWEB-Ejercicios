@@ -12,10 +12,11 @@ cgitb.enable()
 
 form = cgi.FieldStorage()
 
-busqueda = form.getfirst("search", "")
+busqueda_simple = form.getfirst("search", "")
+busqueda_images = form.getfirst("search-images", "")
 
 # Si no se enviaron datos → mostrar formulario
-if not busqueda:
+if not busqueda_simple:
     print("Content-Type: text/html; charset=utf-8")
     print()
     print("""
@@ -51,7 +52,7 @@ if not busqueda:
     </html>
     """)
 else:
-    query = urllib.parse.quote_plus(busqueda)
+    query = urllib.parse.quote_plus(busqueda_simple)
     google_url = f"https://www.google.com/search?q={query}"
 
     print("Content-Type: text/html; charset=utf-8")
@@ -64,6 +65,60 @@ else:
       <body>
         <p>Redirigiendo a Google… Si no pasa nada, haz clic
            <a href="{google_url}">aquí</a>.</p>
+      </body>
+    </html>
+    """)
+
+# =================== BÚSQUEDA DE IMÁGENES =======================
+if not busqueda_images:
+    print("Content-Type: text/html; charset=utf-8")
+    print()
+    print("""
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Búsquedas con Google | Búsqueda de Imágenes</title>
+        <link rel="stylesheet" href="../css/styles.css">
+    </head>
+    <body>
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Búsqueda Simple</a></li>
+                    <li><a href="../searchimages.html">Búsqueda de Imágenes</a></li>
+                    <li><a href="../advancedsearch.html">Búsqueda Avanzada</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main id="imagessearch">
+            <h1>Búsqueda de Imágenes</h1>
+            <br>
+            <form id="frm-images" action="./script.py">
+                <input type="text" name="search-images" id="input-search-images">
+                <br><br>
+                <button type="submit" id="btn-images">Búsqueda con Google</button>
+            </form>
+        </main>
+    </body>
+    </html>
+    """)
+else:
+    query = urllib.parse.quote_plus(busqueda_images)
+    google_url_images = f"https://www.google.com/search?tbm=isch&q={query}"
+
+    print("Content-Type: text/html; charset=utf-8")
+    print()
+    print(f"""
+    <html>
+      <head>
+        <meta http-equiv="refresh" content="0;url={google_url_images}">
+      </head>
+      <body>
+        <p>Redirigiendo a Google Imágenes… Si no pasa nada, haz clic
+           <a href="{google_url_images}">aquí</a>.</p>
       </body>
     </html>
     """)

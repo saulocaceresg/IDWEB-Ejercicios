@@ -20,12 +20,11 @@
     <main id="imagessearch">
         <h1>Búsqueda de Imágenes</h1>
         <br>
-        <form id="frm-images" action="/">
-            <input type="text" name="search" id="input-search-images">
+        <form id="frm-images" action="./cgi-bin/script.py" method="get">
+            <input type="text" name="search-images" id="input-search-images">
             <br><br>
-            <button id="btn-images">Búsqueda con Google</button>
+            <button type="submit" id="btn-images">Búsqueda con Google</button>
         </form>
     </main>
-
 </body>
 </html>

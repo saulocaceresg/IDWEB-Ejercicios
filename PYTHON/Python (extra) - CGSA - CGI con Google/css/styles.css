@@ -74,7 +74,7 @@ main button#btn-simple, button#btn-images {
     border: none;
     border-radius: 10px;
 }
-main button#btn-simple:hover {
+main button#btn-simple:hover, button#btn-images:hover {
     box-shadow: inset 0 0 0 1px gray;
     /* border: gray 1px solid; */
     cursor: pointer;
