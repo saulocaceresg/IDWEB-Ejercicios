@@ -144,9 +144,9 @@ div.campo input.input-advanced {
     color: white;
     padding-left: 10px;
 }
-div.campo input[name="search-advanced"]:focus {
+div.campo input.input-advanced:focus {
     outline: none;
-    border-color: rgb(113, 174, 199);
+    border-color: #71aec7;
     border-radius: 1px;
 }
 
